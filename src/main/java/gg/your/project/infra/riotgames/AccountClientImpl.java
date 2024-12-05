@@ -11,7 +11,6 @@ public class AccountClientImpl {
 
     @Value("${riotgames.apiKey}")
     private String apiKey;
-
     private final AccountClient accountClient;
 
     public AccountResponse getAccount(final String gameName, final String tagLine) {

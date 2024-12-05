@@ -19,7 +19,7 @@ class AccountClientTest {
 
         assertSoftly(softly -> {
             softly.assertThat(account.puuid())
-                    .isEqualTo("ViTWAPeD2jN85dC73cO189WxMxSkfru1R5gGcFnMGBdp6gaTFE-c1mpDGrs3nxLKNGCHXnvQ502azQ");
+                    .isEqualTo("jfgcPI2_9rOZRAcsgkSf56G4RA_cZHxNu4yUWkZaSnL_XZPDp7noFnrPsfg_ENcB8NsDTHQ_JZ2wjA");
             softly.assertThat(account.gameName())
                     .isEqualTo("난 우리팀의 노력과 열정을 믿");
             softly.assertThat(account.tagLine())
