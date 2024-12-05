@@ -17,7 +17,8 @@ public record PlayerDto(
         String lane, //랭크에서 정해진 라인
         int champLevel, //챔피언 레벨
         String championName, //챔피언 이름
-        int totalMinionsKilled, //cs
+        int cs, //cs
+        double csPerMinute, //분당 cs
         double kda, //kda
         int kills, //킬
         int assists, //어시
@@ -27,15 +28,13 @@ public record PlayerDto(
         int wardsKilled, //와드 제거
         int visionWardsBoughtInGame, //제어 와드
         int goldEarned, //획득 골드
-        int magicDamageDealt, //마법피해
-        int magicDamageDealtToChampions, //챔피언 마법피해
-        int physicalDamageDealt, //물리피해
-        int physicalDamageDealtToChampions, //챔피언 물리피해
+        int totalChampionsDamage, //챔피언 마법피해+챔피언 물리피해
         boolean win,
         List<Integer> items, //아이템
         RuneDto runs //룬
 ) {
-    public static PlayerDto from(final ParticipantDto dto) {
+    public static PlayerDto from(final ParticipantDto dto, final long gameTime) {
+        int totalCs = getTotalCs(dto);
         return PlayerDto.builder().
                 riotIdGameName(dto.riotIdGameName())
                 .riotIdTagline(dto.riotIdTagline())
@@ -48,7 +47,8 @@ public record PlayerDto(
                 .lane(dto.lane())
                 .champLevel(dto.champLevel())
                 .championName(dto.championName())
-                .totalMinionsKilled(dto.totalMinionsKilled())
+                .cs(totalCs)
+                .csPerMinute(totalCs / ((double) gameTime / 60))
                 .kda(dto.challenges().kda())
                 .kills(dto.kills())
                 .assists(dto.assists())
@@ -58,9 +58,7 @@ public record PlayerDto(
                 .wardsKilled(dto.wardsKilled())
                 .visionWardsBoughtInGame(dto.visionWardsBoughtInGame())
                 .goldEarned(dto.goldEarned())
-                .magicDamageDealt(dto.magicDamageDealt())
-                .magicDamageDealtToChampions(dto.magicDamageDealtToChampions())
-                .physicalDamageDealt(dto.physicalDamageDealt())
+                .totalChampionsDamage(dto.magicDamageDealtToChampions() + dto.physicalDamageDealtToChampions())
                 .win(dto.win())
                 .items(List.of(
                         dto.item0(),
@@ -73,5 +71,10 @@ public record PlayerDto(
                 ))
                 .runs(RuneDto.from(dto.perks()))
                 .build();
+    }
+
+    private static int getTotalCs(final ParticipantDto dto) {
+        return dto.totalMinionsKilled() +
+                dto.neutralMinionsKilled();
     }
 }

@@ -1,0 +1,50 @@
+.match-table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.match-table th, .match-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.match-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.item-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.spell-icon, .rune-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.champion-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.kda{
+    font-weight: bold;
+}
+
+.item-row {
+    display: flex;
+    justify-content: center;
+}
+
+.item-slot {
+    width: 24px;
+    height: 24px;
+}
+
+.empty-slot {
+    background-color: #d3d3d3;
+    width: 24px;
+    height: 24px;
+}

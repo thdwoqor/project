@@ -1,6 +1,6 @@
 package gg.your.project.domain;
 
-import gg.your.project.infra.riotgames.SpellClient;
+import gg.your.project.infra.riotgames.ImageDataClient;
 import gg.your.project.infra.riotgames.response.SpellResponse;
 import gg.your.project.infra.riotgames.response.dto.SpellDataDto;
 import jakarta.annotation.PostConstruct;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class SpellRepositoryImpl implements SpellRepository {
 
-    private final SpellClient spellClient;
+    private final ImageDataClient imageDataClient;
     private final Map<Integer, Spell> database = new ConcurrentHashMap<>();
 
     @Override
@@ -25,7 +25,7 @@ public class SpellRepositoryImpl implements SpellRepository {
 
     @PostConstruct
     public void initialize() {
-        SpellResponse spells = spellClient.getSpells();
+        SpellResponse spells = imageDataClient.getSpells();
         for (SpellDataDto value : spells.data().values()) {
             database.put(
                     Integer.parseInt(value.key()),

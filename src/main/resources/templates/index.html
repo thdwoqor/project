@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+</head>
+<body>
+<div class="container">
+    <table class="match-table">
+        <tbody>
+        <tr th:each="player , index: ${match.players()}">
+            <td>
+                <img th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/' + ${player.championName()} +'.png'"
+                     class="champion-icon" th:alt="${player.championName()}">
+            </td>
+            <td th:text="${player.champLevel()}"></td>
+            <td>
+                <div class="spells-runes">
+                    <img th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/spell/' + ${spell.get(player.spellD()).getId()} +'.png'"
+                         class="spell-icon" th:alt="${spell.get(player.spellD()).getId()}">
+                    <img th:src="'https://ddragon.leagueoflegends.com/cdn/img/'+ ${rune.get(player.runs().primaryRuneIds().get(0)).getIcon()}"
+                         class="rune-icon" alt="Rune 1">
+                </div>
+                <div class="spells-runes">
+                    <img th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/spell/' + ${spell.get(player.spellF()).getId()} +'.png'"
+                         class="spell-icon" th:alt="${spell.get(player.spellF()).getId()}">
+                    <img th:src="'https://ddragon.leagueoflegends.com/cdn/img/'+ ${rune.get(player.runs().secondaryPageId()).getIcon()}"
+                         class="rune-icon" alt="Rune 2">
+                </div>
+            </td>
+            <td th:text="${player.riotIdGameName()}+'#'+${player.riotIdTagline()}"></td>
+            <td>
+                <div class="kda" th:text="${#numbers.formatDecimal(player.kda(), 1,2)}"></div>
+                <div th:text="${player.kills()}+ '/' +${player.deaths()}+ '/' + ${player.assists()}"></div>
+            </td>
+            <td>
+                <div class="item-row">
+                    <img th:if="${player.items().get(0)} != 0"
+                         th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/item/'+${player.items().get(0)}+'.png'"
+                         class="item-icon" alt="Item 1">
+                    <div th:if="${player.items().get(0)} == 0" class="item-slot empty-slot"></div>
+
+                    <img th:if="${player.items().get(1)} != 0"
+                         th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/item/'+${player.items().get(1)}+'.png'"
+                         class="item-icon" alt="Item 2">
+                    <div th:if="${player.items().get(1)} == 0" class="item-slot empty-slot"></div>
+
+                    <img th:if="${player.items().get(2)} != 0"
+                         th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/item/'+${player.items().get(2)}+'.png'"
+                         class="item-icon" alt="Item 3">
+                    <div th:if="${player.items().get(2)} == 0" class="item-slot empty-slot"></div>
+                </div>
+                <div class="item-row">
+                    <img th:if="${player.items().get(3)} != 0"
+                         th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/item/'+${player.items().get(3)}+'.png'"
+                         class="item-icon" alt="Item 4">
+                    <div th:if="${player.items().get(3)} == 0" class="item-slot empty-slot"></div>
+
+                    <img th:if="${player.items().get(4)} != 0"
+                         th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/item/'+${player.items().get(4)}+'.png'"
+                         class="item-icon" alt="Item 5">
+                    <div th:if="${player.items().get(4)} == 0" class="item-slot empty-slot"></div>
+
+                    <img th:if="${player.items().get(5)} != 0"
+                         th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/item/'+${player.items().get(5)}+'.png'"
+                         class="item-icon" alt="Item 6">
+                    <div th:if="${player.items().get(5)} == 0" class="item-slot empty-slot"></div>
+                </div>
+            </td>
+            <td>
+                <div th:text="'CS ' + ${player.cs()} + ' ('+${#numbers.formatDecimal(player.csPerMinute(),1,1)}+')'"></div>
+                <div th:text="'골드 ' +${player.goldEarned()}"></div>
+            </td>
+            <td>
+                <div th:text="${player.totalChampionsDamage()}"></div>
+                <div class="progress">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 30%" th:aria-valuenow="${player.totalChampionsDamage()}" aria-valuemin="0" aria-valuemax="100000"></div>
+                </div>
+            </td>
+<!--            <td th:text="${player.totalChampionsDamage()}"></td>-->
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

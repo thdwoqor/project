@@ -1,5 +1,6 @@
 package gg.your.project.service.dto;
 
+import gg.your.project.infra.riotgames.response.RiotMatchResponse;
 import java.util.List;
 import lombok.Builder;
 
@@ -12,9 +13,9 @@ public record MatchResponse(
         List<TeamDto> teams,
         List<PlayerDto> players
 ) {
-    public static MatchResponse from(final gg.your.project.infra.riotgames.response.MatchResponse response) {
+    public static MatchResponse from(final RiotMatchResponse response) {
         List<PlayerDto> players = response.info().participants().stream()
-                .map(PlayerDto::from)
+                .map(it -> PlayerDto.from(it, response.info().gameDuration()))
                 .toList();
 
         List<TeamDto> teams = response.info()
