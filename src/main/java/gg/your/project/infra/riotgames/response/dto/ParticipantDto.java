@@ -1,4 +1,4 @@
-package gg.your.project.infra.riotgames.dto;
+package gg.your.project.infra.riotgames.response.dto;
 
 public record ParticipantDto(
         Integer allInPings,
@@ -43,6 +43,7 @@ public record ParticipantDto(
         Integer item1,
         Integer item2,
         Integer item3,
+        Integer item4,
         Integer item5,
         Integer item6,
         Integer itemsPurchased,

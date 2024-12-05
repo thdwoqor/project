@@ -1,4 +1,4 @@
-package gg.your.project.infra.riotgames.dto;
+package gg.your.project.infra.riotgames.response;
 
 public record AccountResponse(
         String puuid,

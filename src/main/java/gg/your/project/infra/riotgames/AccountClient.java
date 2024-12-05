@@ -1,6 +1,6 @@
 package gg.your.project.infra.riotgames;
 
-import gg.your.project.infra.riotgames.dto.AccountResponse;
+import gg.your.project.infra.riotgames.response.AccountResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

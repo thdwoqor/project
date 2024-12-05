@@ -1,4 +1,4 @@
-package gg.your.project.infra.riotgames.dto;
+package gg.your.project.infra.riotgames.response.dto;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public record InfoDto(
         List<ParticipantDto> participants,
         String platformId,
         Integer queueId,
-        List<TeamDto> teams,
+        List<MatchTeamDto> teams,
         String tournamentCode
 ) {
 }

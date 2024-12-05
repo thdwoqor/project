@@ -1,6 +1,7 @@
 package gg.your.project.infra.riotgames;
 
-import gg.your.project.infra.riotgames.dto.MatchDetailResponse;
+import gg.your.project.service.MatchProvider;
+import gg.your.project.service.dto.MatchDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,17 +9,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class MatchClientImpl {
+public class MatchClientImpl implements MatchProvider {
 
     @Value("${riotgames.apiKey}")
     private String apiKey;
     private final MatchClient matchClient;
 
-    public List<String> getMatchIds(final String puuid, final int count) {
+    @Override
+    public List<String> findMatchIds(final String puuid, final int count) {
         return matchClient.getMatchIds(puuid, apiKey, count);
     }
 
-    public MatchDetailResponse getMatchDetail(final String matchId) {
-        return matchClient.getMatchDetail(matchId, apiKey);
+    @Override
+    public MatchDto findMatch(final String matchId) {
+        return MatchDto.from(matchClient.getMatchDetail(matchId, apiKey));
     }
 }

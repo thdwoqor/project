@@ -1,6 +1,6 @@
 package gg.your.project.infra.riotgames;
 
-import gg.your.project.infra.riotgames.dto.AccountResponse;
+import gg.your.project.infra.riotgames.response.AccountResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

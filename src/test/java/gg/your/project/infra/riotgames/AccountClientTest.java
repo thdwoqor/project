@@ -2,7 +2,7 @@ package gg.your.project.infra.riotgames;
 
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
-import gg.your.project.infra.riotgames.dto.AccountResponse;
+import gg.your.project.infra.riotgames.response.AccountResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

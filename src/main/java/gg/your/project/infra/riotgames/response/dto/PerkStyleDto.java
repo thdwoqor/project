@@ -1,4 +1,4 @@
-package gg.your.project.infra.riotgames.dto;
+package gg.your.project.infra.riotgames.response.dto;
 
 import java.util.List;
 

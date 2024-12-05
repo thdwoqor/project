@@ -1,6 +1,6 @@
 package gg.your.project.infra.riotgames;
 
-import gg.your.project.infra.riotgames.dto.MatchDetailResponse;
+import gg.your.project.infra.riotgames.response.MatchResponse;
 import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
@@ -19,7 +19,7 @@ public interface MatchClient {
     );
 
     @GetMapping(value = "/{matchId}", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    MatchDetailResponse getMatchDetail(
+    MatchResponse getMatchDetail(
             @PathVariable("matchId") String matchId,
             @RequestParam("api_key") String api_key
     );
