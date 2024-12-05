@@ -1,11 +1,10 @@
 package gg.your.project.service.dto;
 
-import gg.your.project.infra.riotgames.response.MatchResponse;
 import java.util.List;
 import lombok.Builder;
 
 @Builder
-public record MatchDto(
+public record MatchResponse(
         String matchId,
         long gameTime, //게임 시간(초)
         long gameDate, //게임 날짜(초)
@@ -13,7 +12,7 @@ public record MatchDto(
         List<TeamDto> teams,
         List<PlayerDto> players
 ) {
-    public static MatchDto from(final MatchResponse response) {
+    public static MatchResponse from(final gg.your.project.infra.riotgames.response.MatchResponse response) {
         List<PlayerDto> players = response.info().participants().stream()
                 .map(PlayerDto::from)
                 .toList();
@@ -24,7 +23,7 @@ public record MatchDto(
                 .map(team -> TeamDto.from(team, players))
                 .toList();
 
-        return MatchDto.builder()
+        return MatchResponse.builder()
                 .matchId(response.metadata().matchId())
                 .gameTime(response.info().gameDuration())
                 .gameDate(response.info().gameCreation())

@@ -1,6 +1,7 @@
 package gg.your.project.infra.riotgames;
 
-import gg.your.project.service.dto.MatchDto;
+import gg.your.project.service.MatchProvider;
+import gg.your.project.service.dto.MatchResponse;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class MatchClientTest {
 
     @Autowired
-    private MatchClientImpl matchClient;
+    private MatchProvider matchClient;
 
     @Test
     void 최근_매칭_id를_조회할_수_있다() {
@@ -24,8 +25,8 @@ class MatchClientTest {
 
     @Test
     void 매칭_상세_정보를_조회할_수_있다() {
-        MatchDto matchDto = matchClient.findMatch("KR_7295591783");
+        MatchResponse matchResponse = matchClient.findMatch("KR_7295591783");
 
-        Assertions.assertThat(matchDto.matchId()).isEqualTo("KR_7295591783");
+        Assertions.assertThat(matchResponse.matchId()).isEqualTo("KR_7295591783");
     }
 }
