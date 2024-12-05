@@ -1,36 +1,60 @@
 .match-table {
-    width: 100%;
-    margin-top: 20px;
+    width: 70%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 .match-table th, .match-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: none;
+    padding: 12px;
     text-align: center;
+    vertical-align: middle;
 }
 
 .match-table th {
-    background-color: #f2f2f2;
+    background-color: #4e73df;
+    color: #fff;
     font-weight: bold;
+    text-transform: uppercase;
+}
+
+.match-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.match-table tbody tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.3s;
 }
 
 .item-icon {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
+    margin: 2px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .spell-icon, .rune-icon {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    border-radius: 4px;
 }
 
 .champion-icon {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.kda{
+.kda {
     font-weight: bold;
+    color: #1cc88a;
 }
 
 .item-row {
@@ -39,12 +63,30 @@
 }
 
 .item-slot {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
+    margin: 2px;
+    border-radius: 4px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .empty-slot {
-    background-color: #d3d3d3;
-    width: 24px;
-    height: 24px;
+    background-color: #e0e0e0;
+}
+
+.progress {
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #e9ecef;
+}
+
+.progress-bar {
+    transition: width 0.6s ease;
+}
+
+.spells-runes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

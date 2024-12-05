@@ -77,11 +77,10 @@
             </td>
             <td>
                 <div th:text="${player.totalChampionsDamage()}"></div>
-                <div class="progress">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 30%" th:aria-valuenow="${player.totalChampionsDamage()}" aria-valuemin="0" aria-valuemax="100000"></div>
+                <div class="progress mt-1">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: calc(${player.totalChampionsDamage()} / 1000)%;" th:aria-valuenow="${player.totalChampionsDamage()}" aria-valuemin="0" aria-valuemax="100000"></div>
                 </div>
             </td>
-<!--            <td th:text="${player.totalChampionsDamage()}"></td>-->
         </tr>
 
         </tbody>
