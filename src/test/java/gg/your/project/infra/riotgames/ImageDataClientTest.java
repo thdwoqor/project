@@ -1,13 +1,9 @@
 package gg.your.project.infra.riotgames;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import gg.your.project.domain.Rune;
-import gg.your.project.domain.RuneRepository;
-import gg.your.project.domain.Spell;
-import gg.your.project.domain.SpellRepository;
-import gg.your.project.infra.riotgames.response.RuneResponse;
-import gg.your.project.infra.riotgames.response.SpellResponse;
+import gg.your.project.domain.rune.Rune;
+import gg.your.project.domain.rune.RuneRepository;
+import gg.your.project.domain.spell.Spell;
+import gg.your.project.domain.spell.SpellRepository;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

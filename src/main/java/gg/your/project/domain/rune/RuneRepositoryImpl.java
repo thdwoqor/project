@@ -1,4 +1,4 @@
-package gg.your.project.domain;
+package gg.your.project.domain.rune;
 
 import gg.your.project.infra.riotgames.ImageDataClient;
 import gg.your.project.infra.riotgames.response.RuneResponse;

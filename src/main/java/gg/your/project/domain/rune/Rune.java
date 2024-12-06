@@ -1,4 +1,4 @@
-package gg.your.project.domain;
+package gg.your.project.domain.rune;
 
 import lombok.Getter;
 

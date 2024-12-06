@@ -1,4 +1,4 @@
-package gg.your.project.domain;
+package gg.your.project.domain.spell;
 
 import lombok.Getter;
 

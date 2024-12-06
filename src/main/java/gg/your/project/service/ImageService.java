@@ -1,9 +1,9 @@
 package gg.your.project.service;
 
-import gg.your.project.domain.RuneRepository;
-import gg.your.project.domain.Rune;
-import gg.your.project.domain.Spell;
-import gg.your.project.domain.SpellRepository;
+import gg.your.project.domain.rune.RuneRepository;
+import gg.your.project.domain.rune.Rune;
+import gg.your.project.domain.spell.Spell;
+import gg.your.project.domain.spell.SpellRepository;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
