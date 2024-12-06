@@ -16,6 +16,12 @@ public class MatchController {
     private final MatchService matchService;
     private final ImageService imageService;
 
+    @GetMapping(value = {"/", "/match"})
+    public String indexPage(
+    ) {
+        return "index";
+    }
+
     @GetMapping("/match/{fullName}")
     public String matchPage(
             @PathVariable("fullName") String fullName,
@@ -27,6 +33,5 @@ public class MatchController {
         model.addAttribute("match", response);
         return "match";
     }
-
 
 }

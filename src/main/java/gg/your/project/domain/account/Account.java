@@ -21,11 +21,19 @@ public class Account {
     private String tagline;
     private SearchFullName searchFullName;
 
-    public Account(final String puuid, final String gameName, final String tagline, final SearchFullName searchFullName) {
+    public Account(final String puuid, final String gameName, final String tagline,
+                   final SearchFullName searchFullName) {
+        validate(puuid, gameName, tagline);
         this.puuid = puuid;
         this.gameName = gameName;
         this.tagline = tagline;
         this.searchFullName = searchFullName;
+    }
+
+    public void validate(final String puuid, final String gameName, final String tagline) {
+        if (puuid == null || gameName == null || tagline == null) {
+            throw new IllegalArgumentException("닉네임을 찾을 수 없습니다.");
+        }
     }
 
 }

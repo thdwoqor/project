@@ -31,6 +31,6 @@ public class MatchService {
                         match.matchCategory() == MatchCategory.TEAM ||
                         match.matchCategory() == MatchCategory.NORMAL
                 ).findFirst()
-                .orElseThrow();
+                .orElseThrow(()->new IllegalArgumentException("최근 10경기 내 (일반, 솔로 랭크, 자유 랭크) 전적이 존재하지 않습니다."));
     }
 }
