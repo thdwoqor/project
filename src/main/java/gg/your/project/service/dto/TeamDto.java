@@ -1,7 +1,7 @@
 package gg.your.project.service.dto;
 
 import gg.your.project.domain.TeamCategory;
-import gg.your.project.infra.riotgames.response.dto.MatchTeamDto;
+import gg.your.project.infra.riotgames.response.dto.FeignMatchTeamDto;
 import java.util.List;
 import lombok.Builder;
 
@@ -18,7 +18,7 @@ public record TeamDto(
         TeamCategory teamCategory,
         boolean win
 ) {
-    public static TeamDto from(final MatchTeamDto dto, List<PlayerDto> players) {
+    public static TeamDto from(final FeignMatchTeamDto dto, List<PlayerDto> players) {
         int totalGold = players.stream()
                 .filter(player -> player.teamId() == dto.teamId())
                 .mapToInt(PlayerDto::goldEarned)
