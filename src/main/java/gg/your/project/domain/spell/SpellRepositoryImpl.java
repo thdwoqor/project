@@ -1,8 +1,8 @@
 package gg.your.project.domain.spell;
 
 import gg.your.project.infra.riotgames.ImageDataClient;
-import gg.your.project.infra.riotgames.response.SpellResponse;
-import gg.your.project.infra.riotgames.response.dto.SpellDataDto;
+import gg.your.project.infra.riotgames.response.FeignSpellResponse;
+import gg.your.project.infra.riotgames.response.dto.FeignSpellDataDto;
 import jakarta.annotation.PostConstruct;
 import java.util.List;
 import java.util.Map;
@@ -25,8 +25,8 @@ public class SpellRepositoryImpl implements SpellRepository {
 
     @PostConstruct
     public void initialize() {
-        SpellResponse spells = imageDataClient.getSpells();
-        for (SpellDataDto value : spells.data().values()) {
+        FeignSpellResponse spells = imageDataClient.getSpells();
+        for (FeignSpellDataDto value : spells.data().values()) {
             database.put(
                     Integer.parseInt(value.key()),
                     new Spell(

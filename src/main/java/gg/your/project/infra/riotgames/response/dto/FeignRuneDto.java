@@ -1,6 +1,6 @@
 package gg.your.project.infra.riotgames.response.dto;
 
-public record RuneDto(
+public record FeignRuneDto(
         String id,
         String key,
         String icon,

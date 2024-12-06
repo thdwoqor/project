@@ -1,8 +1,8 @@
 package gg.your.project.domain.rune;
 
 import gg.your.project.infra.riotgames.ImageDataClient;
-import gg.your.project.infra.riotgames.response.RuneResponse;
-import gg.your.project.infra.riotgames.response.dto.RuneDto;
+import gg.your.project.infra.riotgames.response.FeignRuneResponse;
+import gg.your.project.infra.riotgames.response.dto.FeignRuneDto;
 import jakarta.annotation.PostConstruct;
 import java.util.List;
 import java.util.Map;
@@ -25,12 +25,12 @@ public class RuneRepositoryImpl implements RuneRepository {
 
     @PostConstruct
     public void initialize() {
-        List<RuneDto> runes = imageDataClient.getRunes().stream()
+        List<FeignRuneDto> runes = imageDataClient.getRunes().stream()
                 .flatMap(slot -> slot.slots().stream())
                 .flatMap(rune -> rune.runes().stream())
                 .toList();
 
-        for (RuneResponse rune : imageDataClient.getRunes()) {
+        for (FeignRuneResponse rune : imageDataClient.getRunes()) {
             database.put(
                     Integer.parseInt(rune.id()),
                     new Rune(
@@ -41,7 +41,7 @@ public class RuneRepositoryImpl implements RuneRepository {
             );
         }
 
-        for (RuneDto rune : runes) {
+        for (FeignRuneDto rune : runes) {
             database.put(
                     Integer.parseInt(rune.id()),
                     new Rune(

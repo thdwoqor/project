@@ -1,7 +1,7 @@
 package gg.your.project.service.dto;
 
 import gg.your.project.domain.MatchCategory;
-import gg.your.project.infra.riotgames.response.RiotMatchResponse;
+import gg.your.project.infra.riotgames.response.FeignMatchResponse;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,11 +13,11 @@ public record MatchResponse(
         String matchId,
         long gameTime, //게임 시간(초)
         LocalDateTime gameDate, //게임 날짜
-        MatchCategory matchCategory, //큐 정보 (420: 솔랭, 430: 일반, 440: 자유랭, 450: 칼바람)
+        MatchCategory matchCategory, //큐 정보
         List<TeamDto> teams,
         List<PlayerDto> players
 ) {
-    public static MatchResponse from(final RiotMatchResponse response) {
+    public static MatchResponse from(final FeignMatchResponse response) {
         List<PlayerDto> players = response.info().participants().stream()
                 .map(player -> PlayerDto.from(player, response.info().gameDuration()))
                 .toList();

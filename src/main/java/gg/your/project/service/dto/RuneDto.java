@@ -1,6 +1,6 @@
 package gg.your.project.service.dto;
 
-import gg.your.project.infra.riotgames.response.dto.PerksDto;
+import gg.your.project.infra.riotgames.response.dto.FeignPerksDto;
 import java.util.List;
 
 public record RuneDto(
@@ -11,7 +11,7 @@ public record RuneDto(
         List<Integer> statModIds
 ) {
 
-    public static RuneDto from(final PerksDto dto) {
+    public static RuneDto from(final FeignPerksDto dto) {
         return new RuneDto(
                 dto.styles().get(0).style(),
                 List.of(

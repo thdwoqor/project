@@ -1,7 +1,7 @@
 package gg.your.project.infra.riotgames;
 
-import gg.your.project.infra.riotgames.response.RuneResponse;
-import gg.your.project.infra.riotgames.response.SpellResponse;
+import gg.your.project.infra.riotgames.response.FeignRuneResponse;
+import gg.your.project.infra.riotgames.response.FeignSpellResponse;
 import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface ImageDataClient {
 
     @GetMapping(value = "/cdn/14.23.1/data/ko_KR/summoner.json")
-    SpellResponse getSpells();
+    FeignSpellResponse getSpells();
 
     @GetMapping(value = "/cdn/14.23.1/data/ko_KR/runesReforged.json")
-    List<RuneResponse> getRunes();
+    List<FeignRuneResponse> getRunes();
 }

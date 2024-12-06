@@ -3,7 +3,7 @@ package gg.your.project.infra.riotgames.response.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
-public record ChallengesDto(
+public record FeignChallengesDto(
         @JsonProperty("12AssistStreakCount")
         Integer assistStreakCount,
         Integer baronBuffGoldAdvantageOverThreshold,

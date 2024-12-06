@@ -1,6 +1,6 @@
 package gg.your.project.infra.riotgames.response.dto;
 
-public record PerkStatsDto(
+public record FeignPerkStatsDto(
     Integer defense,
     Integer flex,
     Integer offense

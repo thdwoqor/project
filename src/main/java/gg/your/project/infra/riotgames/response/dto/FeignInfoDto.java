@@ -2,7 +2,7 @@ package gg.your.project.infra.riotgames.response.dto;
 
 import java.util.List;
 
-public record InfoDto(
+public record FeignInfoDto(
         String endOfGameResult,
         Long gameCreation,
         Long gameDuration,
@@ -14,10 +14,10 @@ public record InfoDto(
         String gameType,
         String gameVersion,
         Integer mapId,
-        List<ParticipantDto> participants,
+        List<FeignParticipantDto> participants,
         String platformId,
         Integer queueId,
-        List<MatchTeamDto> teams,
+        List<FeignMatchTeamDto> teams,
         String tournamentCode
 ) {
 }

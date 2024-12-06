@@ -1,6 +1,6 @@
 package gg.your.project.infra.riotgames.response.dto;
 
-public record ObjectiveDto(
+public record FeignObjectiveDto(
         Boolean first,
         Integer kills
 ) {

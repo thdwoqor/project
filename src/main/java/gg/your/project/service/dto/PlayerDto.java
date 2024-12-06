@@ -1,6 +1,6 @@
 package gg.your.project.service.dto;
 
-import gg.your.project.infra.riotgames.response.dto.ParticipantDto;
+import gg.your.project.infra.riotgames.response.dto.FeignParticipantDto;
 import java.util.List;
 import lombok.Builder;
 
@@ -33,7 +33,7 @@ public record PlayerDto(
         List<Integer> items, //아이템
         RuneDto runs //룬
 ) {
-    public static PlayerDto from(final ParticipantDto dto, final long gameTime) {
+    public static PlayerDto from(final FeignParticipantDto dto, final long gameTime) {
         int totalCs = getTotalCs(dto);
         return PlayerDto.builder().
                 riotIdGameName(dto.riotIdGameName())
@@ -73,7 +73,7 @@ public record PlayerDto(
                 .build();
     }
 
-    private static int getTotalCs(final ParticipantDto dto) {
+    private static int getTotalCs(final FeignParticipantDto dto) {
         return dto.totalMinionsKilled() +
                 dto.neutralMinionsKilled();
     }

@@ -1,6 +1,6 @@
 package gg.your.project.infra.riotgames.response.dto;
 
-public record MissionsDto(
+public record FeignMissionsDto(
     Integer playerScore0,
     Integer playerScore1,
     Integer playerScore2,

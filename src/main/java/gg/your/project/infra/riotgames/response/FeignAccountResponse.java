@@ -1,6 +1,6 @@
 package gg.your.project.infra.riotgames.response;
 
-public record AccountResponse(
+public record FeignAccountResponse(
         String puuid,
         String gameName,
         String tagLine

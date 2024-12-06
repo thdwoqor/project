@@ -2,9 +2,9 @@ package gg.your.project.infra.riotgames.response.dto;
 
 import java.util.List;
 
-public record PerkStyleDto(
+public record FeignPerkStyleDto(
     String description,
-    List<PerkStyleSelectionDto> selections,
+    List<FeignPerkStyleSelectionDto> selections,
     Integer style
 ) {
 }

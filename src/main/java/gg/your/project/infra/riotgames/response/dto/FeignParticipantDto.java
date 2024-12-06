@@ -1,6 +1,6 @@
 package gg.your.project.infra.riotgames.response.dto;
 
-public record ParticipantDto(
+public record FeignParticipantDto(
         Integer allInPings,
         Integer assistMePings,
         Integer assists,
@@ -13,7 +13,7 @@ public record ParticipantDto(
         Integer commandPings,
         Integer championTransform,
         Integer consumablesPurchased,
-        ChallengesDto challenges,
+        FeignChallengesDto challenges,
         Integer damageDealtToBuildings,
         Integer damageDealtToObjectives,
         Integer damageDealtToTurrets,
@@ -57,7 +57,7 @@ public record ParticipantDto(
         Integer magicDamageDealt,
         Integer magicDamageDealtToChampions,
         Integer magicDamageTaken,
-        MissionsDto missions,
+        FeignMissionsDto missions,
         Integer neutralMinionsKilled,
         Integer needVisionPings,
         Integer nexusKills,
@@ -80,7 +80,7 @@ public record ParticipantDto(
         Integer playerScore10,
         Integer playerScore11,
         Integer pentaKills,
-        PerksDto perks,
+        FeignPerksDto perks,
         Integer physicalDamageDealt,
         Integer physicalDamageDealtToChampions,
         Integer physicalDamageTaken,
