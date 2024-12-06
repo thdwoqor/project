@@ -1,7 +1,7 @@
 package gg.your.project.infra.riotgames;
 
-import gg.your.project.service.MatchProvider;
 import gg.your.project.service.dto.MatchResponse;
+import gg.your.project.service.match.RiotMatchProvider;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class MatchClientTest {
 
     @Autowired
-    private MatchProvider matchClient;
+    private RiotMatchProvider matchClient;
 
     @Test
     void 최근_매칭_id를_조회할_수_있다() {
