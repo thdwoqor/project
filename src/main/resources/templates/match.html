@@ -22,25 +22,25 @@
         <div class="match-date" th:text="${#temporals.format(match.gameDate(), 'yyyy/MM/dd - HH:mm')}"></div>
 
         <div class="team-score">
-            <div th:if="${match.teams().get(0).win()} == true" class="team-win">
+            <div th:if="${match.teams().get(0).win()} == true" class="team-win team-blue">
                 <div class="team-content" th:text="${match.teams().get(0).teamCategory().getName()}"></div>
                 승리
                 <div class="team-gold" th:text="${#numbers.formatDecimal(match.teams().get(0).gold() / 1000.0,1,1)}+'K'"></div>
                 <div class="team-content" th:text="${match.teams().get(0).kills()}"></div>
             </div>
-            <div th:if="${match.teams().get(0).win()} != true" class="team-lose">
+            <div th:if="${match.teams().get(0).win()} != true" class="team-lose team-blue">
                 <div class="team-content" th:text="${match.teams().get(0).teamCategory().getName()}"></div>
                 패배
                 <div class="team-gold" th:text="${#numbers.formatDecimal(match.teams().get(0).gold() / 1000.0,1,1)}+'K'"></div>
                 <div class="team-content" th:text="${match.teams().get(0).kills()}"></div>
             </div>
-            <div th:if="${match.teams().get(1).win()} == true" class="team-win">
+            <div th:if="${match.teams().get(1).win()} == true" class="team-win team-red">
                 <div class="team-content" th:text="${match.teams().get(1).teamCategory().getName()}"></div>
                 승리
                 <div class="team-gold" th:text="${#numbers.formatDecimal(match.teams().get(1).gold() / 1000.0,1,1)}+'K'"></div>
                 <div class="team-content" th:text="${match.teams().get(1).kills()}"></div>
             </div>
-            <div th:if="${match.teams().get(1).win()} != true" class="team-lose">
+            <div th:if="${match.teams().get(1).win()} != true" class="team-lose team-red">
                 <div class="team-content" th:text="${match.teams().get(1).teamCategory().getName()}"></div>
                 패배
                 <div class="team-gold" th:text="${#numbers.formatDecimal(match.teams().get(1).gold() / 1000.0,1,1)}+'K'"></div>

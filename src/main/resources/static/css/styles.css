@@ -121,25 +121,30 @@ body {
     background: rgb(57, 58, 60);
 }
 
-.team-lose {
-    margin: 10px auto;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    order: 0;
-    flex: 1 1 0%;
-    color: rgb(244, 88, 78);
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.team-win {
+.team-red {
     margin: 10px auto;
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
     order: 0;
     flex: 1 1 0%;
+}
+
+.team-lose {
+    color: rgb(244, 88, 78);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.team-blue {
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex: 1 1 0%;
+}
+
+.team-win {
     color: rgb(49, 142, 239);
     font-size: 1.5em;
     font-weight: bold;
