@@ -6,7 +6,7 @@ public record RiotIdDto(
 ) {
     public static RiotIdDto from(final String fullName) {
         if (!fullName.contains("#")) {
-            throw new IllegalArgumentException("소환사를 찾을 수 없습니다.");
+            throw new IllegalArgumentException("태그를 확인해 주세요");
         }
 
         String[] split = fullName.split("#");

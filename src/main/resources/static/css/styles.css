@@ -94,3 +94,63 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+#search-input {
+    width: 300px;
+    border-radius: 4px 0 0 4px;
+}
+#search-button {
+    width: 40px;
+    border-radius: 0 4px 4px 0;
+}
+
+.team-score{
+    margin: 10px auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 12px;
+    border-radius: 4px;
+    background: rgb(57, 58, 60);
+}
+
+.team-lose {
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    order: 0;
+    flex: 1 1 0%;
+    color: rgb(244, 88, 78);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.team-win {
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    order: 0;
+    flex: 1 1 0%;
+    color: rgb(49, 142, 239);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.team-content {
+    color: #ffffff;
+    margin: 10px auto;
+}
+
+.team-gold {
+    color: #eac131;
+    margin: 10px auto;
+}

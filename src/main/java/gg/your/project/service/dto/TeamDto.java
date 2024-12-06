@@ -1,5 +1,6 @@
 package gg.your.project.service.dto;
 
+import gg.your.project.domain.TeamCategory;
 import gg.your.project.infra.riotgames.response.dto.MatchTeamDto;
 import java.util.List;
 import lombok.Builder;
@@ -14,7 +15,7 @@ public record TeamDto(
         int riftHerald, //전령
         int inhibitor, //억제기
         int tower, //타워
-        int teamId,
+        TeamCategory teamCategory,
         boolean win
 ) {
     public static TeamDto from(final MatchTeamDto dto, List<PlayerDto> players) {
@@ -32,7 +33,7 @@ public record TeamDto(
                 .riftHerald(dto.objectives().riftHerald().kills())
                 .inhibitor(dto.objectives().inhibitor().kills())
                 .tower(dto.objectives().tower().kills())
-                .teamId(dto.teamId())
+                .teamCategory(TeamCategory.from(dto.teamId()))
                 .win(dto.win())
                 .build();
     }
