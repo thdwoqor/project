@@ -5,6 +5,7 @@ import gg.your.project.domain.rune.RuneRepository;
 import gg.your.project.domain.spell.Spell;
 import gg.your.project.domain.spell.SpellRepository;
 import java.util.List;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,14 +19,16 @@ class ImageDataClientTest {
     private RuneRepository runeRepository;
 
     @Test
-    void name() {
+    void 스펠_이미지_정보를_가져올_수_있다() {
         List<Spell> spells = spellRepository.findByAll();
-        System.out.println(spells);
+
+        Assertions.assertThat(spells).isNotEmpty();
     }
 
     @Test
-    void name2() {
+    void 룬_이미지_정보를_가져올_수_있다() {
         List<Rune> runes = runeRepository.findByAll();
-        System.out.println(runes);
+
+        Assertions.assertThat(runes).isNotEmpty();
     }
 }

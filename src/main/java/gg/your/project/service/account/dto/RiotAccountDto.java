@@ -1,14 +1,14 @@
-package gg.your.project.service.dto;
+package gg.your.project.service.account.dto;
 
 import gg.your.project.infra.riotgames.response.AccountResponse;
 
-public record AccountDto(
+public record RiotAccountDto(
         String puuid,
         String gameName,
         String tagLine
 ) {
-    public static AccountDto from(final AccountResponse response) {
-        return new AccountDto(
+    public static RiotAccountDto from(final AccountResponse response) {
+        return new RiotAccountDto(
                 response.puuid(),
                 response.gameName(),
                 response.tagLine()

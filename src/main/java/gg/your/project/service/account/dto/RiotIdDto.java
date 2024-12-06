@@ -1,4 +1,4 @@
-package gg.your.project.service.dto;
+package gg.your.project.service.account.dto;
 
 public record RiotIdDto(
         String gameName,

@@ -1,6 +1,7 @@
 package gg.your.project.service;
 
 import gg.your.project.infra.riotgames.MatchClient;
+import gg.your.project.service.MatchProvider;
 import gg.your.project.service.dto.MatchResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
