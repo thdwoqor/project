@@ -11,8 +11,8 @@
 <body>
 <div class="container">
     <div class="match">
-        <div class="match-title">솔로랭크</div>
-        <div class="match-date">11/02 - 28:30</div>
+        <div class="match-title" th:text="${match.matchCategory().getName()}"></div>
+        <div class="match-date" th:text="${#temporals.format(match.gameDate(), 'yyyy/MM/dd - HH:mm')}">11/02 - 28:30</div>
 
         <table class="match-table">
             <tbody>

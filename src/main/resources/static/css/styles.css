@@ -43,11 +43,11 @@ body {
 }
 
 .match-table tbody tr:nth-child(-n+5) {
-    background-color: #392a2b;
+    background-color: #26303b;
 }
 
 .match-table tbody tr:nth-child(n+6) {
-    background-color: #26303b;
+    background-color: #392a2b;
 }
 
 .item-icon {

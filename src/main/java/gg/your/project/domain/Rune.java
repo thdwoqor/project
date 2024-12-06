@@ -1,10 +1,8 @@
 package gg.your.project.domain;
 
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
-@ToString
 public class Rune {
 
     private final int id;
