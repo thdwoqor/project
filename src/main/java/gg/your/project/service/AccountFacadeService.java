@@ -25,7 +25,7 @@ public class AccountFacadeService {
             return findAccount.get();
         }
         RiotAccountDto riotAccount = riotAccountProvider.findAccount(RiotIdDto.from(searchFullName.getSearchFullName()));
-        Account account = new Account(riotAccount.puuid(), riotAccount.gameName(), riotAccount.tagLine(), searchFullName);
-        return accountService.save(account);
+
+        return accountService.updateOrSave(riotAccount);
     }
 }

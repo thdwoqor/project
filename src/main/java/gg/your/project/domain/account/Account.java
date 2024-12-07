@@ -21,7 +21,7 @@ public class Account {
     private String tagline;
     private SearchFullName searchFullName;
 
-    public Account(final String puuid, final String gameName, final String tagline,
+    private Account(final String puuid, final String gameName, final String tagline,
                    final SearchFullName searchFullName) {
         validate(puuid, gameName, tagline);
         this.puuid = puuid;
@@ -30,10 +30,21 @@ public class Account {
         this.searchFullName = searchFullName;
     }
 
-    public void validate(final String puuid, final String gameName, final String tagline) {
+    public static Account from(final String puuid, final String gameName, final String tagline) {
+        return new Account(puuid, gameName, tagline, SearchFullName.from(gameName + "#" + tagline));
+    }
+
+    private void validate(final String puuid, final String gameName, final String tagline) {
         if (puuid == null || gameName == null || tagline == null) {
             throw new IllegalArgumentException("닉네임을 찾을 수 없습니다.");
         }
     }
 
+    public void update(final String puuid, final String gameName, final String tagline) {
+        validate(puuid, gameName, tagline);
+        this.puuid = puuid;
+        this.gameName = gameName;
+        this.tagline = tagline;
+        this.searchFullName = SearchFullName.from(gameName + "#" + tagline);
+    }
 }

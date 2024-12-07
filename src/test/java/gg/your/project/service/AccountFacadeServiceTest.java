@@ -7,6 +7,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import gg.your.project.domain.account.Account;
+import gg.your.project.domain.account.AccountRepository;
 import gg.your.project.domain.account.SearchFullName;
 import gg.your.project.service.account.AccountService;
 import gg.your.project.service.account.RiotAccountProvider;
@@ -22,20 +23,19 @@ class AccountFacadeServiceTest {
     @Autowired
     private AccountFacadeService accountFacadeService;
     @Autowired
-    private AccountService accountService;
+    private AccountRepository accountRepository;
     @MockBean
     private RiotAccountProvider riotAccountProvider;
 
     @Test
     void 기존_계정이_존재할_경우_RIOT_API_요청을_보내지_않는다() {
         //given
-        Account account = new Account(
+        Account account = Account.from(
                 "jfgcPI2_9rOZRAcsgkSf56G4RA_cZHxNu4yUWkZaSnL_XZPDp7noFnrPsfg_ENcB8NsDTHQ_JZ2wjA",
                 "난 우리팀의 노력과 열정을 믿",
-                "kr2",
-                SearchFullName.from("난 우리팀의 노력과 열정을 믿#kr2")
+                "kr2"
         );
-        accountService.save(account);
+        accountRepository.save(account);
 
         //when
         accountFacadeService.findOrSaveAccount(account.getSearchFullName().getSearchFullName());

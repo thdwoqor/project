@@ -46,11 +46,10 @@ class MatchRepositoryTest {
                 MatchFixture.매치("KR_7391497811")
         ));
 
-        when(accountFacadeService.findOrSaveAccount(anyString())).thenReturn(new Account(
+        when(accountFacadeService.findOrSaveAccount(anyString())).thenReturn(Account.from(
                 "jfgcPI2_9rOZRAcsgkSf56G4RA_cZHxNu4yUWkZaSnL_XZPDp7noFnrPsfg_ENcB8NsDTHQ_JZ2wjA",
                 "난 우리팀의 노력과 열정을 믿",
-                "kr2",
-                SearchFullName.from("난 우리팀의 노력과 열정을 믿#kr2")
+                "kr2"
         ));
         when(riotMatchProvider.findMatchAsync(anyString()))
                 .thenReturn(CompletableFuture.completedFuture(MatchFixture.매치응답("KR_7393639370")));
@@ -77,11 +76,10 @@ class MatchRepositoryTest {
                 MatchFixture.매치("KR_7391497816")
         ));
 
-        when(accountFacadeService.findOrSaveAccount(anyString())).thenReturn(new Account(
+        when(accountFacadeService.findOrSaveAccount(anyString())).thenReturn(Account.from(
                 "jfgcPI2_9rOZRAcsgkSf56G4RA_cZHxNu4yUWkZaSnL_XZPDp7noFnrPsfg_ENcB8NsDTHQ_JZ2wjA",
                 "난 우리팀의 노력과 열정을 믿",
-                "kr2",
-                SearchFullName.from("난 우리팀의 노력과 열정을 믿#kr2")
+                "kr2"
         ));
         when(riotMatchProvider.findMatchAsync(anyString()))
                 .thenReturn(CompletableFuture.completedFuture(MatchFixture.매치응답("KR_7391497816")));
