@@ -30,6 +30,7 @@ public class MatchController {
         MatchResponse response = matchFacadeService.findLastMatch(fullName);
         model.addAttribute("spell", imageService.getAllSpellsByMap());
         model.addAttribute("rune", imageService.getAllRunesByMap());
+        model.addAttribute("champion", imageService.getAllChampionByMap());
         model.addAttribute("match", response);
         return "match";
     }

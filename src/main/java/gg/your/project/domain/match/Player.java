@@ -16,6 +16,7 @@ public class Player {
     private final TeamCategory teamCategory;
     private final String lane;
     private final int champLevel;
+    private final int championId;
     private final String championName;
     private final int cs;
     private final double csPerMinute;
@@ -38,10 +39,10 @@ public class Player {
 
     public Player(final String riotIdGameName, final String riotIdTagline, final String summonerName, final int spellD,
                   final int spellF,
-                  final TeamCategory teamCategory, final String lane, final int champLevel, final String championName,
-                  final int cs, final double csPerMinute,
-                  final double kda, final int kills, final int assists, final int deaths, final int wardsPlaced,
-                  final int wardsKilled,
+                  final TeamCategory teamCategory, final String lane, final int champLevel, final int championId,
+                  final String championName, final int cs,
+                  final double csPerMinute, final double kda, final int kills, final int assists, final int deaths,
+                  final int wardsPlaced, final int wardsKilled,
                   final int visionWardsBoughtInGame, final int goldEarned, final int totalChampionsDamage,
                   final boolean win, final List<Integer> items,
                   final int primaryPageId, final List<Integer> primaryRuneIds, final int secondaryPageId,
@@ -55,6 +56,7 @@ public class Player {
         this.teamCategory = teamCategory;
         this.lane = lane;
         this.champLevel = champLevel;
+        this.championId = championId;
         this.championName = championName;
         this.cs = cs;
         this.csPerMinute = csPerMinute;

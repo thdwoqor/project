@@ -18,7 +18,7 @@ public class SpellRepositoryImpl implements SpellRepository {
     private final Map<Integer, Spell> database = new ConcurrentHashMap<>();
 
     @Override
-    public List<Spell> findByAll() {
+    public List<Spell> findAll() {
         return database.values().stream()
                 .toList();
     }

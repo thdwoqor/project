@@ -18,7 +18,7 @@ public class RuneRepositoryImpl implements RuneRepository {
     private final Map<Integer, Rune> database = new ConcurrentHashMap<>();
 
     @Override
-    public List<Rune> findByAll() {
+    public List<Rune> findAll() {
         return database.values().stream()
                 .toList();
     }

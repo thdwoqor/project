@@ -52,7 +52,7 @@
             <tbody>
             <tr th:each="player , index: ${match.players()}">
                 <td>
-                    <img th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/' + ${player.championName()} +'.png'"
+                    <img th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/champion/' + ${champion.get(player.championId()).getImage()}"
                          class="champion-icon" th:alt="${player.championName()}">
                 </td>
                 <td th:text="${player.champLevel()}"></td>

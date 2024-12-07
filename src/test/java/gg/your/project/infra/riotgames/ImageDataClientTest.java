@@ -20,14 +20,14 @@ class ImageDataClientTest {
 
     @Test
     void 스펠_이미지_정보를_가져올_수_있다() {
-        List<Spell> spells = spellRepository.findByAll();
+        List<Spell> spells = spellRepository.findAll();
 
         Assertions.assertThat(spells).isNotEmpty();
     }
 
     @Test
     void 룬_이미지_정보를_가져올_수_있다() {
-        List<Rune> runes = runeRepository.findByAll();
+        List<Rune> runes = runeRepository.findAll();
 
         Assertions.assertThat(runes).isNotEmpty();
     }

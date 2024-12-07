@@ -16,6 +16,7 @@ public record PlayerDto(
         TeamCategory teamCategory, //100이면 블루, 200이면 퍼플
         String lane, //랭크에서 정해진 라인
         int champLevel, //챔피언 레벨
+        int championId, //챔피언 id
         String championName, //챔피언 이름
         int cs, //cs
         double csPerMinute, //분당 cs
@@ -46,6 +47,7 @@ public record PlayerDto(
                 .teamCategory(teamCategory)
                 .lane(lane)
                 .champLevel(champLevel)
+                .championId(championId)
                 .championName(championName)
                 .cs(cs)
                 .csPerMinute(csPerMinute)
@@ -78,6 +80,7 @@ public record PlayerDto(
                 .teamCategory(player.getTeamCategory())
                 .lane(player.getLane())
                 .champLevel(player.getChampLevel())
+                .championId(player.getChampionId())
                 .championName(player.getChampionName())
                 .cs(player.getCs())
                 .csPerMinute(player.getCsPerMinute())
@@ -111,6 +114,7 @@ public record PlayerDto(
                 .teamCategory(TeamCategory.from(dto.teamId()))
                 .lane(dto.lane())
                 .champLevel(dto.champLevel())
+                .championId(dto.championId())
                 .championName(dto.championName())
                 .cs(totalCs)
                 .csPerMinute(totalCs / ((double) gameTime / 60))
