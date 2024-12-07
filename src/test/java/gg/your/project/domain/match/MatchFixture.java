@@ -8,11 +8,11 @@ import java.util.List;
 
 public class MatchFixture {
 
-    public static Match 매치1() {
+    public static Match 매치(final String matchId) {
         return new Match(
-                "KR_7391497819",
+                matchId,
                 new MatchDetail(
-                        "KR_7391497819",
+                        matchId,
                         1638,
                         LocalDateTime.now(),
                         MatchCategory.SOLO,
@@ -26,11 +26,11 @@ public class MatchFixture {
         );
     }
 
-    public static MatchResponse 매치2응답() {
+    public static MatchResponse 매치응답(final String matchId) {
         return MatchResponse.from(new Match(
-                "KR_7393639377",
+                matchId,
                 new MatchDetail(
-                        "KR_7393639377",
+                        matchId,
                         1638,
                         LocalDateTime.now(),
                         MatchCategory.SOLO,

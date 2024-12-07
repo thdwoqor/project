@@ -38,12 +38,12 @@ class MatchRepositoryTest {
     void 최근_경기가_데이터베이스에_존재하지않은_경우_존재하지_않은_경기만_검색한다() {
         //given
         List<String> matchIds = new ArrayList<>(List.of(
-                "KR_7393639377",
-                "KR_7391497819"
+                "KR_7393639370",
+                "KR_7391497811"
         ));
 
         matchRepository.saveAll(List.of(
-                MatchFixture.매치1()
+                MatchFixture.매치("KR_7391497811")
         ));
 
         when(accountFacadeService.findOrSaveAccount(anyString())).thenReturn(new Account(
@@ -53,7 +53,7 @@ class MatchRepositoryTest {
                 SearchFullName.from("난 우리팀의 노력과 열정을 믿#kr2")
         ));
         when(riotMatchProvider.findMatchAsync(anyString()))
-                .thenReturn(CompletableFuture.completedFuture(MatchFixture.매치2응답()));
+                .thenReturn(CompletableFuture.completedFuture(MatchFixture.매치응답("KR_7393639370")));
         when(riotMatchProvider.findMatchIds(anyString(),anyInt()))
                 .thenReturn(matchIds);
 
@@ -63,18 +63,18 @@ class MatchRepositoryTest {
 
         //then
         verify(accountFacadeService,times(1)).findOrSaveAccount(eq("난 우리팀의 노력과 열정을 믿#kr2"));
-        verify(riotMatchProvider,times(1)).findMatchAsync(eq("KR_7393639377"));
+        verify(riotMatchProvider,times(1)).findMatchAsync(eq("KR_7393639370"));
     }
 
     @Test
     void 최근_경기가_모두_데이터베이스에_존재하는_경우_API_요청없이_데이터베이스_값을_반환한다() {
         //given
         List<String> matchIds = new ArrayList<>(List.of(
-                "KR_7391497819"
+                "KR_7391497816"
         ));
 
         matchRepository.saveAll(List.of(
-                MatchFixture.매치1()
+                MatchFixture.매치("KR_7391497816")
         ));
 
         when(accountFacadeService.findOrSaveAccount(anyString())).thenReturn(new Account(
@@ -84,7 +84,7 @@ class MatchRepositoryTest {
                 SearchFullName.from("난 우리팀의 노력과 열정을 믿#kr2")
         ));
         when(riotMatchProvider.findMatchAsync(anyString()))
-                .thenReturn(CompletableFuture.completedFuture(MatchFixture.매치2응답()));
+                .thenReturn(CompletableFuture.completedFuture(MatchFixture.매치응답("KR_7391497816")));
         when(riotMatchProvider.findMatchIds(anyString(),anyInt()))
                 .thenReturn(matchIds);
 
@@ -93,6 +93,6 @@ class MatchRepositoryTest {
 
         //then
         verify(accountFacadeService,times(1)).findOrSaveAccount(eq("난 우리팀의 노력과 열정을 믿#kr2"));
-        verify(riotMatchProvider,times(0)).findMatchAsync(eq("KR_7393639377"));
+        verify(riotMatchProvider,times(0)).findMatchAsync(eq("KR_7391497816"));
     }
 }
