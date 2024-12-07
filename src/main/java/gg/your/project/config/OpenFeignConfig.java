@@ -1,4 +1,4 @@
-package gg.your.project.infra.config;
+package gg.your.project.config;
 
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Configuration;

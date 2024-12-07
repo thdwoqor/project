@@ -1,5 +1,7 @@
 package gg.your.project.service.dto;
 
+import gg.your.project.domain.TeamCategory;
+import gg.your.project.domain.match.Player;
 import gg.your.project.infra.riotgames.response.dto.FeignParticipantDto;
 import java.util.List;
 import lombok.Builder;
@@ -11,9 +13,7 @@ public record PlayerDto(
         String summonerName, //소환사 이름
         int spellD, //소환사 주문 D
         int spellF, //소환사 주문 F
-        int teamId, //100이면 블루, 200이면 퍼플
-        String teamPosition, //어느 라인인지 추정 (탑1, 미드1, 정글1, 바텀2 제약)
-        String individualPosition, //어느 라인인지 추정 (제약 없음)
+        TeamCategory teamCategory, //100이면 블루, 200이면 퍼플
         String lane, //랭크에서 정해진 라인
         int champLevel, //챔피언 레벨
         String championName, //챔피언 이름
@@ -23,16 +23,83 @@ public record PlayerDto(
         int kills, //킬
         int assists, //어시
         int deaths, //데스
-        int controlWardsPlaced, //제어 와드
         int wardsPlaced, //일반 와드
         int wardsKilled, //와드 제거
-        int visionWardsBoughtInGame, //제어 와드
+        int visionWardsBoughtInGame, //제어 와드 구매 횟수
         int goldEarned, //획득 골드
         int totalChampionsDamage, //챔피언 마법피해+챔피언 물리피해
         boolean win,
         List<Integer> items, //아이템
-        RuneDto runs //룬
+        int primaryPageId,
+        List<Integer> primaryRuneIds,
+        int secondaryPageId,
+        List<Integer> secondaryRuneIds,
+        List<Integer> statModIds
 ) {
+    public Player toPlayer() {
+        return Player.builder()
+                .riotIdGameName(riotIdGameName)
+                .riotIdTagline(riotIdTagline)
+                .summonerName(summonerName)
+                .spellD(spellD)
+                .spellF(spellF)
+                .teamCategory(teamCategory)
+                .lane(lane)
+                .champLevel(champLevel)
+                .championName(championName)
+                .cs(cs)
+                .csPerMinute(csPerMinute)
+                .kda(kda)
+                .kills(kills)
+                .assists(assists)
+                .deaths(deaths)
+                .wardsPlaced(wardsPlaced)
+                .wardsKilled(wardsKilled)
+                .visionWardsBoughtInGame(visionWardsBoughtInGame)
+                .goldEarned(goldEarned)
+                .totalChampionsDamage(totalChampionsDamage)
+                .win(win)
+                .items(items)
+                .primaryPageId(primaryPageId)
+                .primaryRuneIds(primaryRuneIds)
+                .secondaryPageId(secondaryPageId)
+                .secondaryRuneIds(secondaryRuneIds)
+                .statModIds(statModIds)
+                .build();
+    }
+
+    public static PlayerDto from(final Player player) {
+        return PlayerDto.builder().
+                riotIdGameName(player.getRiotIdGameName())
+                .riotIdTagline(player.getRiotIdTagline())
+                .summonerName(player.getSummonerName())
+                .spellD(player.getSpellD())
+                .spellF(player.getSpellF())
+                .teamCategory(player.getTeamCategory())
+                .lane(player.getLane())
+                .champLevel(player.getChampLevel())
+                .championName(player.getChampionName())
+                .cs(player.getCs())
+                .csPerMinute(player.getCsPerMinute())
+                .kda(player.getKda())
+                .kills(player.getKills())
+                .assists(player.getAssists())
+                .deaths(player.getDeaths())
+                .wardsPlaced(player.getWardsPlaced())
+                .wardsKilled(player.getWardsKilled())
+                .visionWardsBoughtInGame(player.getVisionWardsBoughtInGame())
+                .goldEarned(player.getGoldEarned())
+                .totalChampionsDamage(player.getTotalChampionsDamage())
+                .win(player.isWin())
+                .items(player.getItems())
+                .primaryPageId(player.getPrimaryPageId())
+                .primaryRuneIds(player.getPrimaryRuneIds())
+                .secondaryPageId(player.getSecondaryPageId())
+                .secondaryRuneIds(player.getSecondaryRuneIds())
+                .statModIds(player.getStatModIds())
+                .build();
+    }
+
     public static PlayerDto from(final FeignParticipantDto dto, final long gameTime) {
         int totalCs = getTotalCs(dto);
         return PlayerDto.builder().
@@ -41,9 +108,7 @@ public record PlayerDto(
                 .summonerName(dto.summonerName())
                 .spellD(dto.summoner1Id())
                 .spellF(dto.summoner2Id())
-                .teamId(dto.teamId())
-                .teamPosition(dto.teamPosition())
-                .individualPosition(dto.individualPosition())
+                .teamCategory(TeamCategory.from(dto.teamId()))
                 .lane(dto.lane())
                 .champLevel(dto.champLevel())
                 .championName(dto.championName())
@@ -53,7 +118,6 @@ public record PlayerDto(
                 .kills(dto.kills())
                 .assists(dto.assists())
                 .deaths(dto.deaths())
-                .controlWardsPlaced(dto.challenges().controlWardsPlaced())
                 .wardsPlaced(dto.wardsPlaced())
                 .wardsKilled(dto.wardsKilled())
                 .visionWardsBoughtInGame(dto.visionWardsBoughtInGame())
@@ -69,7 +133,23 @@ public record PlayerDto(
                         dto.item5(),
                         dto.item6()
                 ))
-                .runs(RuneDto.from(dto.perks()))
+                .primaryPageId(dto.perks().styles().get(0).style())
+                .primaryRuneIds(List.of(
+                        dto.perks().styles().get(0).selections().get(0).perk(),
+                        dto.perks().styles().get(0).selections().get(1).perk(),
+                        dto.perks().styles().get(0).selections().get(2).perk(),
+                        dto.perks().styles().get(0).selections().get(3).perk()
+                ))
+                .secondaryPageId(dto.perks().styles().get(1).style())
+                .secondaryRuneIds(List.of(
+                        dto.perks().styles().get(1).selections().get(0).perk(),
+                        dto.perks().styles().get(1).selections().get(1).perk()
+                ))
+                .statModIds(List.of(
+                        dto.perks().statPerks().defense(),
+                        dto.perks().statPerks().flex(),
+                        dto.perks().statPerks().offense()
+                ))
                 .build();
     }
 

@@ -1,7 +1,7 @@
 package gg.your.project.controller;
 
 import gg.your.project.service.ImageService;
-import gg.your.project.service.MatchService;
+import gg.your.project.service.MatchFacadeService;
 import gg.your.project.service.dto.MatchResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequiredArgsConstructor
 public class MatchController {
 
-    private final MatchService matchService;
+    private final MatchFacadeService matchFacadeService;
     private final ImageService imageService;
 
     @GetMapping(value = {"/", "/match"})
@@ -27,7 +27,7 @@ public class MatchController {
             @PathVariable("fullName") String fullName,
             final Model model
     ) {
-        MatchResponse response = matchService.searchLastMatch(fullName);
+        MatchResponse response = matchFacadeService.findLastMatch(fullName);
         model.addAttribute("spell", imageService.getAllSpellsByMap());
         model.addAttribute("rune", imageService.getAllRunesByMap());
         model.addAttribute("match", response);

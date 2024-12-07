@@ -60,13 +60,13 @@
                     <div class="spells-runes">
                         <img th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/spell/' + ${spell.get(player.spellD()).getId()} +'.png'"
                              class="spell-icon" th:alt="${spell.get(player.spellD()).getId()}">
-                        <img th:src="'https://ddragon.leagueoflegends.com/cdn/img/'+ ${rune.get(player.runs().primaryRuneIds().get(0)).getIcon()}"
+                        <img th:src="'https://ddragon.leagueoflegends.com/cdn/img/'+ ${rune.get(player.primaryRuneIds().get(0)).getIcon()}"
                              class="rune-icon" alt="Rune 1">
                     </div>
                     <div class="spells-runes">
                         <img th:src="'https://ddragon.leagueoflegends.com/cdn/14.23.1/img/spell/' + ${spell.get(player.spellF()).getId()} +'.png'"
                              class="spell-icon" th:alt="${spell.get(player.spellF()).getId()}">
-                        <img th:src="'https://ddragon.leagueoflegends.com/cdn/img/'+ ${rune.get(player.runs().secondaryPageId()).getIcon()}"
+                        <img th:src="'https://ddragon.leagueoflegends.com/cdn/img/'+ ${rune.get(player.secondaryPageId()).getIcon()}"
                              class="rune-icon" alt="Rune 2">
                     </div>
                 </td>

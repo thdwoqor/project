@@ -1,6 +1,8 @@
 package gg.your.project.service.dto;
 
 import gg.your.project.domain.MatchCategory;
+import gg.your.project.domain.match.Match;
+import gg.your.project.domain.match.MatchDetail;
 import gg.your.project.infra.riotgames.response.FeignMatchResponse;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -17,6 +19,41 @@ public record MatchResponse(
         List<TeamDto> teams,
         List<PlayerDto> players
 ) {
+    public Match toMatch() {
+        MatchDetail matchDetail = MatchDetail.builder()
+                .matchId(matchId)
+                .gameTime(gameTime)
+                .gameDate(gameDate)
+                .matchCategory(matchCategory)
+                .teams(teams.stream()
+                        .map(TeamDto::toTeam)
+                        .toList())
+                .players(players.stream()
+                        .map(PlayerDto::toPlayer)
+                        .toList())
+                .build();
+        return new Match(matchId, matchDetail);
+    }
+
+    public static MatchResponse from(final Match match) {
+        return MatchResponse.builder()
+                .matchId(match.getMatchId())
+                .gameTime(match.getMatchDetail().getGameTime())
+                .gameDate(match.getMatchDetail().getGameDate())
+                .matchCategory(match.getMatchDetail().getMatchCategory())
+                .teams(match.getMatchDetail()
+                        .getTeams()
+                        .stream()
+                        .map(TeamDto::from)
+                        .toList())
+                .players(match.getMatchDetail()
+                        .getPlayers()
+                        .stream()
+                        .map(PlayerDto::from)
+                        .toList())
+                .build();
+    }
+
     public static MatchResponse from(final FeignMatchResponse response) {
         List<PlayerDto> players = response.info().participants().stream()
                 .map(player -> PlayerDto.from(player, response.info().gameDuration()))
