@@ -20,6 +20,7 @@ public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String matchId;
     @Convert(converter = MatchDetailConverter.class)
     @Column(columnDefinition = "TEXT")
