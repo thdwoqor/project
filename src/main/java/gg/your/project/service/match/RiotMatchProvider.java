@@ -1,5 +1,6 @@
 package gg.your.project.service.match;
 
+import feign.FeignException;
 import gg.your.project.infra.riotgames.MatchClient;
 import gg.your.project.service.dto.MatchResponse;
 import java.util.List;
@@ -18,7 +19,11 @@ public class RiotMatchProvider {
     private final MatchClient matchClient;
 
     public List<String> findMatchIds(final String puuid, final int count) {
-        return matchClient.getMatchIds(puuid, apiKey, count);
+        try {
+            return matchClient.getMatchIds(puuid, apiKey, count);
+        } catch (FeignException e) {
+            throw new IllegalArgumentException("매치 내역을 찾을 수 없습니다.");
+        }
     }
 
     public MatchResponse findMatch(final String matchId) {
