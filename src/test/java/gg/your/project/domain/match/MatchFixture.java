@@ -2,6 +2,7 @@ package gg.your.project.domain.match;
 
 import gg.your.project.domain.MatchCategory;
 import gg.your.project.domain.TeamCategory;
+import gg.your.project.service.dto.MatchResponse;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -9,19 +10,37 @@ public class MatchFixture {
 
     public static Match 매치1() {
         return new Match(
-                "KR_7295591783",
+                "KR_7391497819",
                 new MatchDetail(
-                        "KR_7295591783",
+                        "KR_7391497819",
                         1638,
                         LocalDateTime.now(),
                         MatchCategory.SOLO,
                         List.of(
-                                new Team(32,0,0,0,0,0,0,4, TeamCategory.BLUE,true),
-                                new Team(16,0,0,0,0,0,0,2, TeamCategory.RED,false)
+                                new Team(32, 0, 0, 0, 0, 0, 0, 4, TeamCategory.BLUE, true),
+                                new Team(16, 0, 0, 0, 0, 0, 0, 2, TeamCategory.RED, false)
 
                         ),
                         List.of()
                 )
         );
+    }
+
+    public static MatchResponse 매치2응답() {
+        return MatchResponse.from(new Match(
+                "KR_7393639377",
+                new MatchDetail(
+                        "KR_7393639377",
+                        1638,
+                        LocalDateTime.now(),
+                        MatchCategory.SOLO,
+                        List.of(
+                                new Team(32, 0, 0, 0, 0, 0, 0, 4, TeamCategory.BLUE, true),
+                                new Team(16, 0, 0, 0, 0, 0, 0, 2, TeamCategory.RED, false)
+
+                        ),
+                        List.of()
+                )
+        ));
     }
 }
