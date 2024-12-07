@@ -30,9 +30,8 @@ public class SpellRepositoryImpl implements SpellRepository {
             database.put(
                     Integer.parseInt(value.key()),
                     new Spell(
-                            value.id(),
-                            value.description(),
-                            Integer.parseInt(value.key())
+                            Integer.parseInt(value.key()),
+                            value.image().full()
                     )
             );
         }

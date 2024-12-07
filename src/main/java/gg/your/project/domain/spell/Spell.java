@@ -5,13 +5,11 @@ import lombok.Getter;
 @Getter
 public class Spell {
 
-    private final String id;
-    private final String description;
-    private final Integer key;
+    private final int id;
+    private final String image;
 
-    public Spell(final String id, final String description, final Integer key) {
+    public Spell(final Integer id, final String image) {
         this.id = id;
-        this.description = description;
-        this.key = key;
+        this.image = image;
     }
 }

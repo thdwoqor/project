@@ -19,7 +19,7 @@ public class ImageService {
     public Map<Integer, Spell> getAllSpellsByMap() {
         Map<Integer, Spell> spells = new HashMap<>();
         for (Spell spell : spellRepository.findByAll()) {
-            spells.put(spell.getKey(), spell);
+            spells.put(spell.getId(), spell);
         }
         return spells;
     }

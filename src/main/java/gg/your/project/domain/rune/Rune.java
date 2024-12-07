@@ -6,12 +6,10 @@ import lombok.Getter;
 public class Rune {
 
     private final int id;
-    private final String icon;
-    private final String name;
+    private final String image;
 
-    public Rune(final int id, final String icon, final String name) {
+    public Rune(final int id, final String image) {
         this.id = id;
-        this.icon = icon;
-        this.name = name;
+        this.image = image;
     }
 }

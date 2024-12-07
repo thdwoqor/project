@@ -35,8 +35,7 @@ public class RuneRepositoryImpl implements RuneRepository {
                     Integer.parseInt(rune.id()),
                     new Rune(
                             Integer.parseInt(rune.id()),
-                            rune.icon(),
-                            rune.name()
+                            rune.icon()
                     )
             );
         }
@@ -46,8 +45,7 @@ public class RuneRepositoryImpl implements RuneRepository {
                     Integer.parseInt(rune.id()),
                     new Rune(
                             Integer.parseInt(rune.id()),
-                            rune.icon(),
-                            rune.name()
+                            rune.icon()
                     )
             );
         }
